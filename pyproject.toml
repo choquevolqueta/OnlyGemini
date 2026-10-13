@@ -1,6 +1,6 @@
 [project]
 name = "onlygemini"
-version = "1.0.0"
+version = "1.0.1"
 description = "ComfyUI custom nodes wrapping Google Gemini APIs for image generation, multi-image composition, video generation (Veo and Gemini Omni Flash), and local LaMa inpainting."
 readme = "README.md"
 requires-python = ">=3.10"
@@ -26,4 +26,4 @@ Repository = "https://github.com/choquevolqueta/OnlyGemini"
 [tool.comfy]
 PublisherId = "choquevolqueta22"
 DisplayName = "OnlyGemini"
-# Icon = "https://raw.githubusercontent.com/choquevolqueta/OnlyGemini/main/icon.png"  # optional: square PNG/JPG/SVG, max 400x400
+Icon = "https://raw.githubusercontent.com/choquevolqueta/OnlyGemini/main/icon.png"
