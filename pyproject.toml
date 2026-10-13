@@ -24,6 +24,6 @@ dependencies = [
 Repository = "https://github.com/choquevolqueta/OnlyGemini"
 
 [tool.comfy]
-PublisherId = "choquevolqueta"
+PublisherId = "choquevolqueta22"
 DisplayName = "OnlyGemini"
 # Icon = "https://raw.githubusercontent.com/choquevolqueta/OnlyGemini/main/icon.png"  # optional: square PNG/JPG/SVG, max 400x400
