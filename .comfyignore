@@ -14,6 +14,3 @@ requirements-dev.txt
 # Local secrets (also git-ignored)
 .env
 .env.*
-
-# CI configuration
-.github/
