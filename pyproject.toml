@@ -20,7 +20,10 @@ dependencies = [
     "opencv-python>=4.8.0",
 ]
 
+[project.urls]
+Repository = "https://github.com/choquevolqueta/OnlyGemini"
+
 [tool.comfy]
 PublisherId = "choquevolqueta"
 DisplayName = "OnlyGemini"
-Icon = ""
+# Icon = "https://raw.githubusercontent.com/choquevolqueta/OnlyGemini/main/icon.png"  # optional: square PNG/JPG/SVG, max 400x400

@@ -1,0 +1,19 @@
+# Files kept in git but left out of the Comfy Registry archive.
+# Syntax matches .gitignore.
+
+# Tests and dev tooling
+tests/
+conftest.py
+ruff.toml
+requirements-dev.txt
+
+# Caches
+.ruff_cache/
+.pytest_cache/
+
+# Local secrets (also git-ignored)
+.env
+.env.*
+
+# CI configuration
+.github/
