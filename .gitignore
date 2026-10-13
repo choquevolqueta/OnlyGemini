@@ -33,3 +33,6 @@ desktop.ini
 *.safetensors
 *.ckpt
 *.pth
+
+# comfy node pack output
+node.zip
