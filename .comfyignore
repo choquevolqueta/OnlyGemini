@@ -14,3 +14,4 @@ requirements-dev.txt
 # Local secrets (also git-ignored)
 .env
 .env.*
+!.env.example

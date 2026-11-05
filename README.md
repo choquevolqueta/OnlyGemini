@@ -65,7 +65,7 @@ environment or from a local `.env` file:
    ```
    ComfyUI/user/onlygemini/.env
    ```
-   with:
+   Start from `.env.example` in the repository and fill in:
    ```
    GEMINI_API_KEY=your-api-key-here
    ```
