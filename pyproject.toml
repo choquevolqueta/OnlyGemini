@@ -1,6 +1,6 @@
 [project]
 name = "onlygemini"
-version = "1.0.1"
+version = "1.1.0"
 description = "ComfyUI custom nodes wrapping Google Gemini APIs for image generation, multi-image composition, video generation (Veo and Gemini Omni Flash), and local LaMa inpainting."
 readme = "README.md"
 requires-python = ">=3.10"

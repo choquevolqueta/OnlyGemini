@@ -213,6 +213,17 @@ The node modules live in `nodes/` and share helpers in `utils.py`. To add a node
 
 ---
 
+## 1.1.0
+
+- LaMa now ships with a vendored Apache-2.0 runtime; no extra pip package
+  and no numpy/Pillow/opencv downgrade.
+- The Gemini API key is read only from `GEMINI_API_KEY` or
+  `ComfyUI/user/onlygemini/.env`.
+- The `api_key` widget is deprecated and ignored; it will be removed in 2.0.
+- Removed the dynamic environment-variable lookup that triggered the
+  registry security flag.
+- Added `.env.example`.
+
 ## License
 
 [MIT](LICENSE) © 2026 Alexander Cortez.
