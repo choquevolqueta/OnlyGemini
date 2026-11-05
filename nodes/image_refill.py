@@ -2,6 +2,7 @@ import numpy as np
 import torch
 from PIL import Image as PILImage
 
+from ..lama.runtime import SimpleLama
 from ..utils import (
     lama_crop_around_mask,
     lama_dilate,
@@ -15,8 +16,6 @@ _lama_instance = None
 def _get_lama():
     global _lama_instance
     if _lama_instance is None:
-        from simple_lama_inpainting import SimpleLama
-
         _lama_instance = SimpleLama()
     return _lama_instance
 
