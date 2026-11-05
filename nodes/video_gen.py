@@ -46,7 +46,16 @@ class VeoGenerate:
                 "aspect_ratio": (["16:9", "9:16"], {"default": "16:9"}),
                 "duration_seconds": ("INT", {"default": 8, "min": 4, "max": 8, "step": 1}),
                 "resolution": (["720p", "1080p"], {"default": "720p"}),
-                "api_key": ("STRING", {"default": "", "tooltip": "Gemini API key or env variable name"}),
+                "api_key": (
+                    "STRING",
+                    {
+                        "default": "",
+                        "tooltip": (
+                            "Deprecated: set GEMINI_API_KEY in user/onlygemini/.env. "
+                            "Values typed here are saved in the workflow and are ignored."
+                        ),
+                    },
+                ),
                 "seed": ("INT", {"default": 69, "min": -1, "max": 2147483646, "step": 1}),
             },
             "optional": {

@@ -44,7 +44,16 @@ class GeminiOrchestrate:
                         "tooltip": "Describe la escena final. Sé específico sobre posiciones y estilo.",
                     },
                 ),
-                "api_key": ("STRING", {"default": "", "tooltip": "API key o nombre de variable de entorno"}),
+                "api_key": (
+                    "STRING",
+                    {
+                        "default": "",
+                        "tooltip": (
+                            "Deprecated: set GEMINI_API_KEY in user/onlygemini/.env. "
+                            "Values typed here are saved in the workflow and are ignored."
+                        ),
+                    },
+                ),
                 "model": (["gemini-3.1-flash-image", "gemini-3-pro-image"], {"default": "gemini-3.1-flash-image"}),
                 "aspect_ratio": (
                     ["1:1", "2:3", "3:2", "3:4", "4:3", "4:5", "5:4", "9:16", "16:9"],

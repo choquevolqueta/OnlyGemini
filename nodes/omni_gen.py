@@ -82,7 +82,16 @@ class OmniFlashGen:
                 "aspect_ratio": (["16:9", "9:16"], {"default": "16:9"}),
                 "resolution": (["720p", "1080p", "4k"], {"default": "720p"}),
                 "seed": ("INT", {"default": 69, "min": -1, "max": 2147483646, "step": 1}),
-                "api_key": ("STRING", {"default": "", "tooltip": "Gemini API key or env variable name"}),
+                "api_key": (
+                    "STRING",
+                    {
+                        "default": "",
+                        "tooltip": (
+                            "Deprecated: set GEMINI_API_KEY in user/onlygemini/.env. "
+                            "Values typed here are saved in the workflow and are ignored."
+                        ),
+                    },
+                ),
             },
             "optional": {
                 "video": ("VIDEO", {"tooltip": "Video base a editar/reestilizar."}),

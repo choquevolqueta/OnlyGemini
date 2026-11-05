@@ -32,7 +32,16 @@ class NanoBananaGen:
         return {
             "required": {
                 "prompt": ("STRING", {"multiline": True, "default": ""}),
-                "api_key": ("STRING", {"default": "", "tooltip": "Gemini API key or env variable name"}),
+                "api_key": (
+                    "STRING",
+                    {
+                        "default": "",
+                        "tooltip": (
+                            "Deprecated: set GEMINI_API_KEY in user/onlygemini/.env. "
+                            "Values typed here are saved in the workflow and are ignored."
+                        ),
+                    },
+                ),
                 "model": (
                     ["gemini-3.1-flash-image", "gemini-3-pro-image", "gemini-3.1-flash-lite-image"],
                     {"default": "gemini-3.1-flash-image"},

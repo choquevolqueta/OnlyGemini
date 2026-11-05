@@ -27,7 +27,7 @@ A small, focused pack of [ComfyUI](https://github.com/comfyanonymous/ComfyUI) cu
 - ComfyUI (recent version with the native `VIDEO` type for `OG Omni Flash`).
 - Python 3.10+.
 - A Gemini API key from [Google AI Studio](https://aistudio.google.com/apikey).
-- `OG LaMa Refill` downloads the LaMa model (~200 MB) to disk on first use; afterwards it runs entirely offline.
+- `OG LaMa Refill` downloads the LaMa model (~196 MiB) to `ComfyUI/user/onlygemini/big-lama.pt` on first use. Set `LAMA_MODEL` to use a local file, or `LAMA_DEVICE` to force `cpu`, `cuda`, or `xpu`. No extra pip package is required.
 
 ---
 
@@ -48,23 +48,45 @@ cd OnlyGemini
 pip install -r requirements.txt
 ```
 
+`requirements.txt` no longer includes LaMa; the model is downloaded on first use.
+
 ---
 
 ## API key setup
 
-Three options, in order of preference:
+OnlyGemini reads the key from `GEMINI_API_KEY`, either from the process
+environment or from a local `.env` file:
 
-1. **Environment variable** (recommended):
+1. **Environment variable** (recommended for CI/headless):
    ```bash
    export GEMINI_API_KEY="your-api-key-here"
    ```
-2. **`.env` file** in the pack folder (git-ignored):
+2. **`.env` file** (recommended for ComfyUI Desktop):
+   ```
+   ComfyUI/user/onlygemini/.env
+   ```
+   with:
    ```
    GEMINI_API_KEY=your-api-key-here
    ```
-3. **Per-node**: type the key directly into each node's `api_key` field.
 
-> `api_key` also accepts the **name** of an environment variable. Connect a text widget with the value `GEMINI_API_KEY` and the pack resolves it automatically.
+The old per-node `api_key` widget is **deprecated and ignored** in 1.1.
+It is kept only so old workflows keep loading, and it will be removed in
+2.0. Do not paste keys into it: widget values are saved in the workflow
+JSON and in the frontend autosave.
+
+If you used the widget in 1.0.x, rotate the key in AI Studio, clear the
+widget, and re-save the workflow.
+
+## Security notes
+
+- Never commit `.env` (it is git-ignored and excluded from the registry
+  archive).
+- Never share a workflow that contains a key in a widget.
+- Error reports include the workflow; check it before posting.
+- If a key was ever saved in a workflow or in the ComfyUI frontend
+  autosave, rotate it in AI Studio. Deleting the widget value does not
+  erase old LevelDB/cache copies.
 
 ---
 
@@ -158,11 +180,11 @@ The pack's video-editing node, built on **Gemini Omni Flash** (`gemini-omni-1.1-
 
 ## Troubleshooting
 
-- **`API key required`** — no key found. Set `GEMINI_API_KEY` or create `.env`.
+- **`API key required`** — no key found. Set `GEMINI_API_KEY` or create `ComfyUI/user/onlygemini/.env`. The per-node `api_key` widget is deprecated.
 - **`400` / invalid argument on video** — Veo extension only accepts Veo-generated videos (720p). For arbitrary video, use `OG Omni Flash`.
 - **Omni edit rejected** — your video may be >10 s, in an unsupported region, or contain people/minors.
 - **`[Errno 11001] getaddrinfo failed` / timeouts** — transient network/DNS; retry.
-- **LaMa slow on first run** — it is downloading the model; later runs use the cache.
+- **LaMa slow on first run** — it is downloading the ~196 MiB model to `ComfyUI/user/onlygemini/big-lama.pt`; later runs use the cache. Set `LAMA_MODEL` to reuse a local file.
 
 ## Limitations
 
