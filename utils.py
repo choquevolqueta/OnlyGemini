@@ -12,13 +12,38 @@ from google import genai
 from google.genai import types
 from PIL import Image
 
-load_dotenv(Path(__file__).parent / ".env")
+
+def _env_paths(user_dir: Path | None = None) -> list[Path]:
+    paths = []
+    if user_dir is None:
+        try:
+            import folder_paths
+
+            user_dir = Path(folder_paths.get_user_directory())
+        except Exception:
+            user_dir = None
+    if user_dir is not None:
+        paths.append(user_dir / "onlygemini" / ".env")
+    paths.append(Path(__file__).parent / ".env")
+    return paths
 
 
-def get_client(api_key):
-    key = os.environ.get(api_key.strip(), api_key.strip()) or os.environ.get("GEMINI_API_KEY")
+def get_client(api_key: str = "") -> genai.Client:
+    if api_key and api_key.strip():
+        print(
+            "[OnlyGemini] api_key widget is deprecated and ignored. "
+            "Set GEMINI_API_KEY in user/onlygemini/.env instead."
+        )
+    for env_path in _env_paths():
+        if env_path.is_file():
+            load_dotenv(env_path, override=False)
+    key = os.getenv("GEMINI_API_KEY", "").strip()
     if not key:
-        raise ValueError("API key required. Provide a key directly or set GEMINI_API_KEY env var.")
+        expected = _env_paths()[0]
+        raise ValueError(
+            f"API key required. Set GEMINI_API_KEY in {expected} (or the environment). "
+            "Do not paste it into the node: widget values are saved in the workflow."
+        )
     return genai.Client(http_options={"api_version": "v1beta"}, api_key=key)
 
 
