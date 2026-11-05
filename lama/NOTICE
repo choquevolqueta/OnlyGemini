@@ -1,0 +1,7 @@
+Vendored from simple-lama-inpainting 0.1.2
+https://github.com/enesmsahin/simple-lama-inpainting
+Copyright (c) enesmsahin
+Licensed under the Apache License, Version 2.0.
+
+LaMa model and original implementation:
+https://github.com/advimman/lama (Apache-2.0)
