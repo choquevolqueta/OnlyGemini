@@ -6,6 +6,7 @@ tests/
 conftest.py
 ruff.toml
 requirements-dev.txt
+docs/
 
 # Caches
 .ruff_cache/
